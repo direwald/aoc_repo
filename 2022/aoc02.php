@@ -12,6 +12,10 @@ foreach ($array as $arr) {
     array_push($input_array, $split);
 }
 
+// Part 1
+// Calculate points from Rock, Paper, Scissors games in input file
+// First letter is opponent's choice, seconds is yours
+
 // Rules
 // A / X  - rock - 1
 // B / Y - paper - 2
@@ -40,6 +44,7 @@ $win = 6;
 
 $match_points = array();
 
+// Convert inoput file into numerical values of each choice
 foreach ($input_array as $match) {
     foreach ($match as $key => $side) {
         if (isset($points[$side])) {
@@ -51,6 +56,8 @@ foreach ($input_array as $match) {
 
 $result = 0;
 
+// Substract choices from each other to determine whether it's a win,
+// loss or draw
 foreach ($match_points as $players) {
     if ($players[0] - $players[1] == 0) {
         $result += $draw + $players[1];
@@ -61,7 +68,8 @@ foreach ($match_points as $players) {
     }
 }
 
-// part 2
+// Part 2
+// First letter is stil opponent's choice, but second letter is the desired result
 
 // rules
 // X - loss
@@ -72,6 +80,7 @@ $result_l = 1;
 $result_d = 2;
 $result_w = 3;
 
+// Just an ugly if tree
 $result_p2 = 0;
 foreach ($match_points as $players) {
     if ($players[1] == $result_d) {
